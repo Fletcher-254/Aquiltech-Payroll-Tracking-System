@@ -1,22 +1,52 @@
-# JSON_Server_Deployment
+# 🧾 Employee Payroll Tracker
 
+A simple, fully functional single-page application for managing employee payroll, built using HTML, CSS, JavaScript, and `json-server`. The backend is hosted on Render and the frontend is deployed with GitHub Pages.
 
+---
 
+## 👨‍💻 Author
 
-By utilizing the provided template, you will be able to create your JSON server repository, which can be deployed on render.com
---------------
+**Fletcher Kariuki**
 
+---
 
-[![Nice UI](https://img.youtube.com/vi/W9sbA1a2-Ag/0.jpg)](https://www.youtube.com/watch?v=W9sbA1a2-Ag)
+## 📋 Project Description
 
+This project helps you:
 
-In this video, I have covered three simple steps to quickly deploy your **JSON Server** on render.com.
+- Add employees with name, role, ID number, phone number, and days worked.
+- Automatically calculate and display total pay per employee.
+- Keep a live summary of total payroll.
+- Delete employees from the system.
+- Uses a live backend API (Render) and a modern user-friendly UI.
 
-Three Simple Steps:
+---
 
-1. Create a repository from the template.
-2. Add your own data.
-3. Deploy it.
+## 🛠️ Tech Stack
 
-Believe me, this is the **easiest way** to deploy your JSON server on render.com. Deploy your db.json file without writing a **single line of code**.
+- **Frontend**: HTML, CSS, JavaScript
+- **Backend**: JSON Server (mock API)
+- **Deployment**: GitHub Pages (frontend), Render (backend)
+
+---
+
+## 🚀 Live Demo
+
+- 🔗 **Frontend (GitHub Pages)**: [https://fletcher-254.github.io/payroll-tracker/](https://fletcher-254.github.io/payroll-tracker/)
+- 🌐 **Backend API (Render)**: [https://aquiltech-payroll.onrender.com/employees](https://aquiltech-payroll.onrender.com/employees)
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the Repository
+
+### 2.Install dependencies
+
+### 3.Run Locally
+
+The backend will be live at: http://localhost:3000/employees
+
+📜 License
+This project is open-source and available for learning purposes
 
