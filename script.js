@@ -36,21 +36,19 @@ function fetchEmployees() {
           Days Worked: ${emp.daysWorked}<br>
           <span class="salary">Total Pay: KES ${totalPay}</span>
           <div class="actions">
-           <button onclick="deleteEmployee('${emp.id}')">Delete</button>
-
+            <button onclick="deleteEmployee('${emp.id}')">Delete</button>
           </div>
         `;
         list.appendChild(li);
       });
 
       totalPayDisplay.textContent = `Total Payroll: KES ${totalPayroll}`;
-    })
-    .catch(error => {
-      console.error("Fetch employees failed:", error);
     });
 }
 
 function addEmployee() {
+  console.log("Add button clicked");
+
   const name = document.getElementById("nameInput").value.trim();
   const role = document.getElementById("roleInput").value;
   const idNumber = document.getElementById("idNumberInput").value.trim();
@@ -77,9 +75,7 @@ function addEmployee() {
       document.getElementById("employeeForm").reset();
       fetchEmployees();
     })
-    .catch(error => {
-      console.error("Add employee failed:", error);
-    });
+    .catch((err) => console.error("Add failed:", err));
 }
 
 function deleteEmployee(id) {
@@ -87,7 +83,7 @@ function deleteEmployee(id) {
     method: "DELETE",
   })
     .then(() => fetchEmployees())
-    .catch(error => console.error("Delete failed:", error));
+    .catch((error) => console.error("Delete failed:", error));
 }
 
 window.onload = fetchEmployees;
