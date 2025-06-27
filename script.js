@@ -1,5 +1,4 @@
-const baseURL = "https://aquiltech-payroll.onrender.com";
-
+const baseURL = "https://aquiltech-payroll.onrender.com/employees";
 
 const roleRates = {
   engineer: 5000,
@@ -15,7 +14,7 @@ document.getElementById("employeeForm").addEventListener("submit", function (e) 
 });
 
 function fetchEmployees() {
-  fetch("https://aquiltech-payroll.onrender.com")
+  fetch(baseURL)
     .then(res => res.json())
     .then(data => {
       const list = document.getElementById("employeeList");
@@ -44,6 +43,9 @@ function fetchEmployees() {
       });
 
       totalPayDisplay.textContent = `Total Payroll: KES ${totalPayroll}`;
+    })
+    .catch(error => {
+      console.error("Fetch employees failed:", error);
     });
 }
 
@@ -59,7 +61,7 @@ function addEmployee() {
     return;
   }
 
-  fetch("https://aquiltech-payroll.onrender.com", {
+  fetch(baseURL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -69,14 +71,18 @@ function addEmployee() {
       phone,
       daysWorked,
     }),
-  }).then(() => {
-    document.getElementById("employeeForm").reset();
-    fetchEmployees();
-  });
+  })
+    .then(() => {
+      document.getElementById("employeeForm").reset();
+      fetchEmployees();
+    })
+    .catch(error => {
+      console.error("Add employee failed:", error);
+    });
 }
 
 function deleteEmployee(id) {
-  fetch(`https://aquiltech-payroll.onrender.com/${id}`, {
+  fetch(`${baseURL}/${id}`, {
     method: "DELETE",
   })
     .then(() => fetchEmployees())
