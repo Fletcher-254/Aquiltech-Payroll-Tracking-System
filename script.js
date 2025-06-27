@@ -1,3 +1,6 @@
+const baseURL = "https://aquiltech-payroll.onrender.com";
+
+
 const roleRates = {
   engineer: 5000,
   supervisor: 3000,
@@ -12,7 +15,7 @@ document.getElementById("employeeForm").addEventListener("submit", function (e) 
 });
 
 function fetchEmployees() {
-  fetch("http://localhost:3000/employees")
+  fetch("https://aquiltech-payroll.onrender.com")
     .then(res => res.json())
     .then(data => {
       const list = document.getElementById("employeeList");
@@ -56,7 +59,7 @@ function addEmployee() {
     return;
   }
 
-  fetch("http://localhost:3000/employees", {
+  fetch("https://aquiltech-payroll.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -73,7 +76,7 @@ function addEmployee() {
 }
 
 function deleteEmployee(id) {
-  fetch(`http://localhost:3000/employees/${id}`, {
+  fetch(`https://aquiltech-payroll.onrender.com/${id}`, {
     method: "DELETE",
   })
     .then(() => fetchEmployees())
