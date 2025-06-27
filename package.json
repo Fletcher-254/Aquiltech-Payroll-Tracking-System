@@ -1,15 +1,19 @@
 {
-  "name": "payroll-tracker-api",
+  "name": "payroll-tracker",
   "version": "1.0.0",
-  "description": "A simple JSON Server backend for a payroll tracker",
-  "main": "index.js",
+  "description": "Employee Payroll Tracker using json-server",
+  "main": "server.js",
   "scripts": {
-    "start": "json-server --watch db.json --port 3000"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "Your Name",
-  "license": "MIT",
   "dependencies": {
     "json-server": "^0.17.3"
-  }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": [],
+  "author": "Fletcher",
+  "license": " "
 }
+
