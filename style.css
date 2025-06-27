@@ -45,6 +45,16 @@ button:hover {
   background-color: #0056b3;
 }
 
+.employee-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 5px;
+}
+
+
+
 ul {
   list-style: none;
   padding: 0;

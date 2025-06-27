@@ -19,6 +19,8 @@ function fetchEmployees() {
     .then(data => {
       const list = document.getElementById("employeeList");
       const totalPayDisplay = document.getElementById("totalPay");
+      const photo = document.getElementById("photoInput").value.trim();
+
       list.innerHTML = "";
       let totalPayroll = 0;
 
@@ -28,17 +30,19 @@ function fetchEmployees() {
         totalPayroll += totalPay;
 
         const li = document.createElement("li");
-        li.innerHTML = `
-          <strong>${emp.name}</strong><br>
-          Role: ${emp.role}<br>
-          ID Number: ${emp.idNumber}<br>
-          Phone: ${emp.phone}<br>
-          Days Worked: ${emp.daysWorked}<br>
-          <span class="salary">Total Pay: KES ${totalPay}</span>
-          <div class="actions">
-            <button onclick="deleteEmployee('${emp.id}')">Delete</button>
-          </div>
-        `;
+li.innerHTML = `
+  <img src="${emp.photo || 'https://via.placeholder.com/80'}" class="employee-photo" />
+  <strong>${emp.name}</strong><br>
+  Role: ${emp.role}<br>
+  ID Number: ${emp.idNumber}<br>
+  Phone: ${emp.phone}<br>
+  Days Worked: ${emp.daysWorked}<br>
+  <span class="salary">Total Pay: KES ${totalPay}</span>
+  <div class="actions">
+    <button onclick="deleteEmployee(${emp.id})">Delete</button>
+  </div>
+`;
+
         list.appendChild(li);
       });
 
@@ -47,36 +51,35 @@ function fetchEmployees() {
 }
 
 function addEmployee() {
-  console.log("Add button clicked");
-
   const name = document.getElementById("nameInput").value.trim();
   const role = document.getElementById("roleInput").value;
   const idNumber = document.getElementById("idNumberInput").value.trim();
   const phone = document.getElementById("phoneInput").value.trim();
   const daysWorked = parseInt(document.getElementById("daysInput").value);
+  const photo = document.getElementById("photoInput").value.trim(); 
 
   if (!name || !role || !idNumber || !phone || isNaN(daysWorked)) {
     alert("Please fill in all fields correctly.");
     return;
   }
 
-  fetch(baseURL, {
+  fetch("https://aquiltech-payroll.onrender.com/employees", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
+    body: JSON.stringify({  
       name,
       role,
       idNumber,
       phone,
       daysWorked,
-    }),
-  })
-    .then(() => {
-      document.getElementById("employeeForm").reset();
-      fetchEmployees();
+      photo  
     })
-    .catch((err) => console.error("Add failed:", err));
+  }).then(() => {
+    document.getElementById("employeeForm").reset();
+    fetchEmployees();
+  });
 }
+
 
 function deleteEmployee(id) {
   fetch(`${baseURL}/${id}`, {
